@@ -6,24 +6,28 @@ from scipy import ndimage, misc
 
 
 # Read images
-IL = cv2.imread('esquerda.ppm') # left image
-IR = cv2.imread('direita.ppm')  # right image
+IL = cv2.imread('./assets/raster/esquerda.ppm') # left image
+IR = cv2.imread('./assets/raster/direita.ppm')  # right image
 gray1 = cv2.cvtColor(IL, cv2.COLOR_BGR2GRAY)
 gray2 = cv2.cvtColor(IR, cv2.COLOR_BGR2GRAY)
 
 print(IL.shape)
 
 
+#Explicação
+# Tenho o Z do mapa de profundidade, mas nao tenho as coordenadas tridimensionais, só os vetores (x,y) do tamanho da imagem
+# Atraves da formula, X = (Zx - Z0x) / Fsx, para calcular do Z
+
 # intrinsic parameter matrix
-fm = 403.657593 # Focal distantce in pixels
-cx = 161.644318 # Principal point - x-coordinate (pixels) 
-cy = 124.202080 # Principal point - y-coordinate (pixels) 
-bl = 119.929 # baseline (mm)
+fm = 403.657593 # Focal distantce in pixels  -> FX
+cx = 161.644318 # Principal point - x-coordinate (pixels)  -> OY
+cy = 124.202080 # Principal point - y-coordinate (pixels)  -> OX
+bl = 119.929 # baseline (mm) -> BASE LINE
 # for the right camera    
 right_k = np.array([[ fm, 0, cx],[0, fm, cy],[0, 0, 1.0000]])
 
 # for the left camera
-left_k = np.array([[fm, 0, cx],[0, fm, cy],[0, 0, 1.0000]])
+left_k = np.array([[fm, 0, cx],[0, fm, cy],[0, 0, 1.0000]]) # K -> utilizado
 
 # Extrinsic parameters
 # Translation between cameras
