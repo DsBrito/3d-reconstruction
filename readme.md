@@ -27,7 +27,7 @@ Este repositório contém o código e os materiais necessários para a reconstru
     ```
           <!-- 2. Execute o código de cálculo de disparidade:
              ```bash
-             python depth_map.py
+             python main.py
              ```
        <!-- 2. Realize a reconstrução 3D:
           ```bash
