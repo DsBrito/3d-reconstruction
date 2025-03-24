@@ -39,11 +39,3 @@ Este repositório contém o código e os materiais necessários para a reconstru
 
 - As imagens de exemplo (`Result01.png`, `Result02.png`, `Result03.png`) servem apenas para comparação e não devem ser utilizadas diretamente na reconstrução.
 - Para seleção de uma ROI, utilize a função `cv2.selectROI(image)` do OpenCV.
-
-## Autor
-
-Raquel Frizera Vassallo
-
-## Data de Entrega
-
-24 de mar., 15:30
