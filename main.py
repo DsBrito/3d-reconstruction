@@ -87,7 +87,6 @@ print("[LOG]: Calculando X e Y reais...")
 X_real = ((u - cx) * Z_real) / fm
 Y_real = ((v - cy) * Z_real) / fm
 
-# Visualization
 print("[LOG]: Iniciando visualização...")
 fig = plt.figure(figsize=(15, 10))
 
@@ -120,12 +119,11 @@ ax4.set_title('MAPA DE PROFUNDIDADE 3D GAUSS')
 # 3D Reconstruction
 print("[LOG]: Iniciando visualização da reconstrução 3D...")
 ax5 = fig.add_subplot(2, 3, (5, 6), projection='3d')
-IL_rgb = cv2.cvtColor(IL, cv2.COLOR_BGR2RGB) #Mapear os cores
+IL_rgb = cv2.cvtColor(IL, cv2.COLOR_BGR2RGB) 
 colors = IL_rgb.reshape((-1, 3)) / 255.0
 
 X_plot, Y_plot, Z_plot = X_real.flatten()[mask][::5], Y_real.flatten()[mask][::5], Z_real.flatten()[mask][::5]
 color_plot = colors[mask][::5]
-#ax5.scatter(X_plot, Y_plot, Z_plot, c=color_plot, marker='.', s=2, alpha=0.8)
 ax5.plot_surface(X, Y, Z, facecolors=IL_rgb/255, rstride=1, cstride=1, linewidth=0, antialiased=False, shade=False)
 ax5.view_init(elev=-75, azim=-90)
 ax5.set_title('RECONSTRUCAO 3D GAUSS')
